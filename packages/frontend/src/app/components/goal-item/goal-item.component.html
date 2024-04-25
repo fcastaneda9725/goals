@@ -1,0 +1,15 @@
+<mat-card class="goal-card">
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="goal-header-image"></div> -->
+    <mat-card-title>{{ goal.title }}</mat-card-title>
+    <mat-card-subtitle>{{ goal.frequency }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ goal.description }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button class="edit-button" (click) = "openDialog(goal, 'Edit')">EDIT</button>
+    <button mat-raised-button color="warn" (click)="openDialog(goal, 'Delete')">DELETE</button>
+
+  </mat-card-actions>
+</mat-card>

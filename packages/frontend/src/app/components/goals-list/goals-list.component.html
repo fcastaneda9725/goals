@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title class="goal-card-title">My Goals</mat-card-title>
+    <button mat-raised-button (click)="openDialog()">New Goal</button>
+  </mat-card-header>
+  <mat-card-content>
+      <div *ngFor="let goal of goals">
+        <app-goal-item [goal]="goal" (refreshRequested)="loadGoals()"></app-goal-item>
+      </div>
+  </mat-card-content>
+</mat-card>
