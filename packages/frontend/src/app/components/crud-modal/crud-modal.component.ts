@@ -36,8 +36,8 @@ export class CrudModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', [Validators.required, Validators.pattern(/I want to (.+) (every \d+ \w+)/i)]]
+      title: [this.data?.goal?.title ?? '', Validators.required],
+      description: [this.data?.goal?.description ?? '', [Validators.required, Validators.pattern(/I want to (.+) (every \d+ \w+)/i)]]
     });
   }
 
@@ -73,7 +73,8 @@ export class CrudModalComponent implements OnInit {
           error: (error) => {console.error('Error updating goal:', error), this.openSnackBar('Error completing goal!: '+ error.error.error, 'Close')}
         });
       } else {
-        this.goalService.addGoal(this.goal).subscribe({
+        var newGoal = {...this.form.value, "completed": false};
+        this.goalService.addGoal(newGoal).subscribe({
           next: () => {this.dialogRef.close(), this.openSnackBar('Goal added successfully!', 'Close')},
           error: (error) => {console.error('Error adding goal:', error.error.error), this.openSnackBar('Error adding goal!: '+ error.error.error, 'Close')}
         });
