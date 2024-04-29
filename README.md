@@ -60,5 +60,3 @@ You can start both the backend and frontend together (if configured) or separate
 ```bash
 pnpm start
 ```
-
-This command is configured to start both the backend server and the frontend application, as defined in your package.json.
