@@ -9,7 +9,7 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button class="edit-button" (click) = "openDialog(goal, 'Edit')">EDIT</button>
+    <button *ngIf="!goal.completed"  mat-raised-button class="edit-button" color="accent" (click)="openDialog(goal, 'Complete')">COMPLETE GOAL</button>
     <button mat-raised-button color="warn" (click)="openDialog(goal, 'Delete')">DELETE</button>
-
   </mat-card-actions>
 </mat-card>

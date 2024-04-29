@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header class="goal-card-header">
+    <mat-card-title class="goal-card-title">My Goals</mat-card-title>
+    <button mat-raised-button (click)="openDialog()">New Goal</button>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-tab-group (selectedIndexChange)="onSelectedTab($event)">
+      <mat-tab label="Active Goals"> <app-goals-list [goals]="goals" (refreshRequested)="loadGoals()"></app-goals-list>
+      </mat-tab>
+      <mat-tab label="Completed Goals"> <app-goals-list [goals]="completedGoals" (refreshRequested)="loadGoals()"></app-goals-list> </mat-tab>
+    </mat-tab-group>
+    </mat-card-content>
+</mat-card>
+

@@ -1,9 +1,9 @@
 import { RouterModule, Routes } from '@angular/router';
-import { GoalsListComponent } from './components/goals-list/goals-list.component';
+import { GoalsTabsComponent } from './components/goals-tabs/goals-tabs.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/goals', pathMatch: 'full' },
-  { path: 'goals', component: GoalsListComponent }
+  { path: 'goals', component: GoalsTabsComponent }
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes);

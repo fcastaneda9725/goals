@@ -5,3 +5,8 @@
 .edit-button {
   margin-right: 15px;
 }
+
+.custom-dialog-padding {
+ /* Apply padding of 20px */
+ padding-left: 20px;
+}

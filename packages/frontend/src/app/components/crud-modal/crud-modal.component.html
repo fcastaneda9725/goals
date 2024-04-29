@@ -1,17 +1,24 @@
-<h1 mat-dialog-title>{{ data.action }} Goal</h1>
-<div mat-dialog-content>
-<mat-form-field appearance="fill">
-    <mat-label>Title</mat-label>
-    <input *ngIf="data.goal !=null" matInput [(ngModel)]="data.goal.title">
-    <input *ngIf="data.goal == null" matInput [(ngModel)]="goal.title">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Description</mat-label>
-    <textarea *ngIf="data.goal != null" matInput [(ngModel)]="data.goal.description"></textarea>
-    <textarea *ngIf="data.goal == null" matInput [(ngModel)]="goal.description"></textarea>
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button (click)="onSaveClick()" >{{ data.action }}</button>
-</div>
+<form [formGroup]="form" (ngSubmit)="onSaveClick()">
+  <div class="modal-body">
+    <h1 mat-dialog-title>{{ data.action }} Goal</h1>
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+        <mat-error *ngIf="form.get('title')?.errors?.['required']">Title is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="form.get('description')?.errors?.['required']">Description is required</mat-error>
+        <mat-error *ngIf="form.get('description')?.errors?.['pattern']">
+          Description must match the pattern "I want to (activity) (every X unit)"
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Cancel</button>
+      <button mat-button type="submit">{{ data.action }}</button>
+    </div>
+  </div>
+</form>

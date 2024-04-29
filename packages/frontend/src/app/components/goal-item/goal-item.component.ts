@@ -13,26 +13,24 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   templateUrl: './goal-item.component.html',
   styleUrl: './goal-item.component.css'
 })
-export class GoalItemComponent implements OnInit {
+export class GoalItemComponent {
   @Input() goal!: Goal;
   @Output() refreshRequested = new EventEmitter<void>();
 
   constructor(public dialog: MatDialog) { }
-  ngOnInit(): void {
-    console.log(this.goal);
-  }
 
   openDialog(goal: Goal, action: string): void {
 
     const dialogRef = this.dialog.open(CrudModalComponent, {
       height: '400px',
-      width: '600px',
-      data: { goal: goal, action: action }
+      width: '400px',
+      data: { goal: goal, action: action },
+      panelClass: 'custom-dialog-padding'
     });
 
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('The dialog was closed', result);
+      console.log('The dialog was closed', this.refreshRequested);
       this.refreshRequested.emit();
     });
   }
